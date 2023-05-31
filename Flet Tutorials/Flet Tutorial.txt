@@ -1,6 +1,0 @@
-Installare python https://windows.atsit.in/it/10972/#:~:text=Se%20il%20cmd%20ti%20dice,non%20abbia%20installato%20il%20gestore.
-
-eseguire nella cartella di lavoro "pip install flet" per installare il pacchetto flet
-
-
-Per avviare l'applicazione in runtime: flet -r advanced-to-do-app.py
