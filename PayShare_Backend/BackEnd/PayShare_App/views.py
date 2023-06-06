@@ -1,38 +1,17 @@
-from django.views.decorators.csrf import csrf_exempt
-from django.http import JsonResponse
+from django.shortcuts import render, redirect
+from .forms import NewUserForm
+from django.contrib.auth import login
+from django.contrib import messages
 
-from BackEnd.PayShare_App.models import User
 
-
-@csrf_exempt
-def register_user(request):
-    if request.method == 'POST':
-        # Ottieni i dati inviati dalla richiesta POST
-        code = request.POST.get('code')
-        password = request.POST.get('password')
-        email = request.POST.get('email')
-        fiscal_code = request.POST.get('fiscal_code')
-        birth_date = request.POST.get('birth_date')
-        birth_place = request.POST.get('birth_place')
-        residence = request.POST.get('residence')
-
-        # Crea un nuovo oggetto User
-        user = User(
-            code=code,
-            password=password,
-            email=email,
-            fiscalCode=fiscal_code,
-            birthDate=birth_date,
-            birthPlace=birth_place,
-            residence=residence
-        )
-
-        # Salva l'oggetto User nel database
-        user.save()
-
-        # Restituisci una risposta JSON di conferma
-        return JsonResponse({'message': 'User registered successfully.'})
-
-    # Restituisci un errore se viene effettuata una richiesta diversa da POST
-    return JsonResponse({'error': 'Invalid request method.'})
-
+def register_request(request):
+    if request.method == "POST":
+        form = NewUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            messages.success(request, "Registration successful.")
+            return redirect("homepage")
+        messages.error(request, "Unsuccessful registration. Invalid information.")
+    form = NewUserForm()
+    return render("True") #render(request=request, template_name="register.html", context={"register_form": form})
