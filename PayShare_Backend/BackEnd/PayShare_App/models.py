@@ -13,6 +13,9 @@ class User(models.Model):
     residence = models.CharField(max_length=250)
     smartContractList = models.CharField(max_length=250) #TODO
     extensions = models.CharField(max_length=250)
+
+    class Meta:
+        db_table = "PayShare_App_user"
         
     
 class Transaction(models.Model):

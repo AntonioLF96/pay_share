@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:payshare_frontend/screens/home.dart';
+import 'package:payshare_frontend/screens/register.dart';
+
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter + Django',
+      initialRoute: '/',
+      routes: {
+        //'/': (context) => Home(),
+        //'/register': (context) => UserRegistrationPage()
+        '/': (context) => UserRegistrationPage()
+      },
+    );
+  }
+}
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -34,7 +48,7 @@ class MyApp extends StatelessWidget {
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
-}
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});

@@ -1,0 +1,10 @@
+Django
+pip install django
+pip install djangorestframework
+
+
+
+
+
+Flutter
+flutter pub add http

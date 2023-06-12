@@ -1,0 +1,17 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+#.idea files
+.idea/*.iml
+.idea/inspectionProfiles/
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+
+# Ignore Python compiled files
+*.pyc
+
+# Ignore specific compiled files in BackEnd/__pycache__ directory
+../BackEnd/__pycache__/settings.cpython-311.pyc
+../BackEnd/__pycache__/urls.cpython-311.pyc
