@@ -8,8 +8,7 @@ from rest_framework import status, viewsets
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
-from . import models
-from .models import User
+from .models import UserApp
 from rest_framework.views import APIView
 
 from .serializer import UserSerializer
@@ -30,7 +29,7 @@ class RegisterUserApiView(APIView):
         smartContractList = request.data["smartContractList"]
         extensions = request.data["extensions"]
 
-        user = User(
+        user = UserApp(
             code=code,
             password=password,
             email=email,
@@ -63,7 +62,7 @@ def register_user(request):
         extensions = request.POST.get("extensions")
 
         # Crea un nuovo oggetto User
-        user = User(
+        user = UserApp(
             code=code,
             password=password,
             email=email,
@@ -87,5 +86,5 @@ def register_user(request):
 
 # Create your views here.
 class UserView(viewsets.ModelViewSet):
-    queryset = User.objects.all()
+    queryset = UserApp.objects.all()
     serializer_class = UserSerializer

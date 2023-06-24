@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 
-class User(models.Model):
+class UserApp(models.Model):
     code = models.CharField(max_length=250)
     password = models.CharField(max_length=250)
     email = models.CharField(max_length=250)
@@ -15,17 +15,17 @@ class User(models.Model):
     extensions = models.CharField(max_length=250)
 
     class Meta:
-        db_table = "PayShare_App_user"
+        db_table = "PayShare_App_userApp"
         
     
 class Transaction(models.Model):
-    idUser = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    idUserApp = models.ForeignKey(UserApp, on_delete=models.CASCADE, null=True, blank=True)
     recipientCode = models.CharField(max_length=250)
-    #recipientId: models.ForeignKey(User, on_delete=models.CASCADE)  #BlockChain
+    #recipientId: models.ForeignKey(UserApp, on_delete=models.CASCADE)  #BlockChain
 
     
     def __str__(self):
-        return f"Transaction id:{self.idTransaction},\nidUser:{self.idUser},\nrecipientCode:{self.recipientCode}"
+        return f"Transaction id:{self.idTransaction},\nidUserApp:{self.idUserApp},\nrecipientCode:{self.recipientCode}"
     
 
     
@@ -36,7 +36,7 @@ class Bancomat(models.Model):
  
 class SmartContract(models.Model):
     idBancomat =  models.ForeignKey(Bancomat, on_delete=models.CASCADE)
-    userIdList = models.CharField(max_length=250) #TODO
+    userAppIdList = models.CharField(max_length=250) #TODO
     transactionIdList = models.CharField(max_length=250) #TODO
     finalTransactionId =  models.ForeignKey(Transaction, on_delete=models.CASCADE)
     extensions = models.CharField(max_length=250)
@@ -49,8 +49,8 @@ class BancomatSmartContract(models.Model):
 
 class Group(models.Model):
     name = models.CharField(max_length=250)
-    userList = models.CharField(max_length=250) #TODO
-    recipientId = models.ForeignKey(User, on_delete=models.CASCADE)
+    userAppList = models.CharField(max_length=250) #TODO
+    recipientId = models.ForeignKey(UserApp, on_delete=models.CASCADE)
     smartContractId = models.ForeignKey(SmartContract, on_delete=models.CASCADE)
     bEnd = models.CharField(max_length=250)
     dStart = models.CharField(max_length=250)

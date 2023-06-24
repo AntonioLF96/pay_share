@@ -85,10 +85,10 @@ WSGI_APPLICATION = 'BackEnd.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'PAYSHARE',
+        'NAME': 'payshare',
         'USER': 'admin',
         'PASSWORD': 'Trealf2023!',
-        'HOST': 'payshare.cy0gdsho0o0n.eu-north-1.rds.amazonaws.com',
+        'HOST': 'pay-share.cy0gdsho0o0n.eu-north-1.rds.amazonaws.com',
         'PORT': 3306
     }
 }
